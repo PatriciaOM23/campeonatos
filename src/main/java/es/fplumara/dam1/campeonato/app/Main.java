@@ -1,5 +1,8 @@
 package es.fplumara.dam1.campeonato.app;
 
+import es.fplumara.dam1.campeonato.repository.DeportistaRepositoryImpl;
+import es.fplumara.dam1.campeonato.repository.ResultadoRepositoryImpl;
+
 /**
  * Main de ejemplo para demostrar el flujo mínimo del examen (sin menú complejo).
  * Debe leer ficheros de entrada y escribir un fichero de salida.
@@ -8,6 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Examen DAM1 - Campeonato deportivo (Java 21)");
+        DeportistaRepositoryImpl deportistaRepository = new DeportistaRepositoryImpl();
+        ResultadoRepositoryImpl resultadoRepository = new ResultadoRepositoryImpl();
 
         /*
          * FLUJO MÍNIMO (lo que debe hacer tu main)
