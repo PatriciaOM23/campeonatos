@@ -9,12 +9,16 @@ import es.fplumara.dam1.campeonato.model.Resultado;
 import es.fplumara.dam1.campeonato.repository.DeportistaRepository;
 import es.fplumara.dam1.campeonato.repository.ResultadoRepository;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CampeonatoService {
     private DeportistaRepository deportistaRepository;
     private ResultadoRepository resultadoRepository;
+
 
     public CampeonatoService(DeportistaRepository deportistaRepository, ResultadoRepository resultadoRepository) {
         this.deportistaRepository = deportistaRepository;
@@ -50,13 +54,34 @@ public class CampeonatoService {
         }
         resultadoRepository.save(r);
     }
-    public List<LineaRanking> rankingList(){
-        return List.of();
+    public List<LineaRanking> ranking(){
+               Map<String, Integer> rankingMap = resultadoRepository.listAll().stream().collect(Collectors.groupingBy(
+                Resultado::getIdDeportista,
+                       Collectors.summingInt(Resultado::getPuntos)));
+
+               List<LineaRanking> lineaRankings = rankingMap.entrySet().stream().map(
+                       e -> {
+                           String id = e.getKey();
+               Deportista d = deportistaRepository.findById(id).orElseThrow(() -> new NoEncontradoException("El deportista no existe"));
+                           int puntos = e.getValue();
+                           return new LineaRanking(
+                                   id, d.getNombre(),d.getPais(),puntos
+                           );
+
+                       }
+               ).sorted(Comparator.comparingInt(LineaRanking::getPuntos).reversed()).toList();
+        return lineaRankings;
     }
-    public List<Resultado> resultadosDePais(){
-        return List.of();
+    public List<Resultado> resultadosDePais(String pais){
+        Deportista primerDeportista = deportistaRepository.findByPais(pais).getFirst();
+        String idPrimerDeportista = primerDeportista.getId();
+
+       return resultadoRepository.listAll().stream()
+                .filter(p -> p.getIdDeportista().equals(primerDeportista.getId()))
+               .toList();
     }
     public Set<String> paisesParticipantes(){
-        return Set.of();
+      return  deportistaRepository.listAll().stream().map(Deportista::getPais).collect(Collectors.toSet());
+
     }
 }

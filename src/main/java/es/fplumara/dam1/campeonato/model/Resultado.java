@@ -9,6 +9,14 @@ public class Resultado implements Puntuable{
     private String idDeportista;
     private int posicion;
 
+    public Resultado(String id, String idPrueba, TipoPrueba tipoPrueba, String idDeportista, int posicion) {
+        this.id = id;
+        this.idPrueba = idPrueba;
+        this.tipoPrueba = tipoPrueba;
+        this.idDeportista = idDeportista;
+        this.posicion = posicion;
+    }
+
     public String getId() {
         return id;
     }
