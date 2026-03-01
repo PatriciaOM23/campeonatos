@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class DeportistaRepositoryImpl implements DeportistaRepository{
     private Map<String,Deportista> datos;
 
-    public DeportistaRepositoryImpl(Map<String, Deportista> datos) {
+    public DeportistaRepositoryImpl() {
         this.datos = datos;
     }
 

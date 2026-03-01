@@ -9,7 +9,7 @@ import java.util.Optional;
 public class ResultadoRepositoryImpl implements ResultadoRepository{
     private Map<String,Resultado> datos;
 
-    public ResultadoRepositoryImpl(Map<String, Resultado> datos) {
+    public ResultadoRepositoryImpl() {
         this.datos = datos;
     }
 
