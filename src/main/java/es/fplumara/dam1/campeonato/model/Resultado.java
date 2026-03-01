@@ -38,6 +38,17 @@ public class Resultado implements Puntuable{
     }
 
     @Override
+    public String toString() {
+        return "Resultado{" +
+                "id='" + id + '\'' +
+                ", idPrueba='" + idPrueba + '\'' +
+                ", tipoPrueba=" + tipoPrueba +
+                ", idDeportista='" + idDeportista + '\'' +
+                ", posicion=" + posicion +
+                '}';
+    }
+
+    @Override
     public int getPuntos() {
         switch (getPosicion()){
             case 1 -> {

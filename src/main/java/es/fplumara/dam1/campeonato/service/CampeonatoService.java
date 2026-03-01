@@ -24,6 +24,8 @@ public class CampeonatoService {
         this.deportistaRepository = deportistaRepository;
         this.resultadoRepository = resultadoRepository;
     }
+
+
     public void registrarDeportista(Deportista d){
         if(d == null || d.getId().isBlank() || d.getPais().isBlank() || d.getNombre().isBlank() ){
             throw new IllegalArgumentException("Datos vacíos al registrar un deportista.");

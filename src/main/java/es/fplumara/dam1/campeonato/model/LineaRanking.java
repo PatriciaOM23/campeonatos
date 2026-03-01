@@ -13,7 +13,15 @@ public class LineaRanking {
         this.puntos = puntos;
     }
 
-
+    @Override
+    public String toString() {
+        return "LineaRanking{" +
+                "idDeportista='" + idDeportista + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                ", puntos=" + puntos +
+                '}';
+    }
 
     public String getIdDeportista() {
         return idDeportista;
