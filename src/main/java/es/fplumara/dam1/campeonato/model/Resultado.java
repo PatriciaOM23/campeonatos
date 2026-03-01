@@ -2,7 +2,7 @@ package es.fplumara.dam1.campeonato.model;
 
 import java.util.stream.Stream;
 
-public class Resultado {
+public class Resultado implements Puntuable{
     private String id;
     private String idPrueba;
     private TipoPrueba tipoPrueba;
@@ -27,5 +27,23 @@ public class Resultado {
 
     public int getPosicion() {
         return posicion;
+    }
+
+    @Override
+    public int getPuntos() {
+        switch (getPosicion()){
+            case 1 -> {
+                return 5;
+            }
+            case 2 -> {
+                return 3;
+            }
+            case 3 -> {
+                return 1;
+            }
+            default -> {
+                return 0;
+            }
+        }
     }
 }
