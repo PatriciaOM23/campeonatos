@@ -2,6 +2,7 @@ package es.fplumara.dam1.campeonato.repository;
 
 import es.fplumara.dam1.campeonato.model.Deportista;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,7 +12,7 @@ public class DeportistaRepositoryImpl implements DeportistaRepository{
     private Map<String,Deportista> datos;
 
     public DeportistaRepositoryImpl() {
-        this.datos = datos;
+        this.datos = new HashMap<>();
     }
 
     @Override

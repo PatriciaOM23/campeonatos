@@ -9,4 +9,6 @@ public class Deportista extends Participante{
     public String getPais() {
         return super.getPais();
     }
+
+
 }

@@ -2,6 +2,7 @@ package es.fplumara.dam1.campeonato.repository;
 
 import es.fplumara.dam1.campeonato.model.Resultado;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public class ResultadoRepositoryImpl implements ResultadoRepository{
     private Map<String,Resultado> datos;
 
     public ResultadoRepositoryImpl() {
-        this.datos = datos;
+        this.datos = new HashMap<>();
     }
 
     @Override
