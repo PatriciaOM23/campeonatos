@@ -30,6 +30,10 @@ public class ResultadoRepositoryImpl implements ResultadoRepository{
 
     @Override
     public boolean existByPruebaYDeportista(String idPrueba, String idDeportista) {
-        return false;
+        return datos.values()
+                .stream()
+                .anyMatch(resultado -> resultado.getIdPrueba().equals(idPrueba)
+                        && resultado.getIdDeportista().equals(idDeportista));
     }
+
 }
